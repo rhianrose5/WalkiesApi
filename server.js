@@ -10,6 +10,9 @@ var corsOptions = {
 
 app.use(cors(corsOptions));
 
+var distDir = __dirname + "/dist/";
+app.use(express.static(distDir));
+
 // parse requests of content-type - application/json
 app.use(bodyParser.json());
 
