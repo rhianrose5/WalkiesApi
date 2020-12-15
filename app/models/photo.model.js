@@ -4,6 +4,7 @@ module.exports = mongoose => {
         mongoose.Schema({
             walkId: Number,
             walkName: String,
+            photoId: Number,
             photo: String
         })
     );
