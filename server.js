@@ -10,7 +10,7 @@ var corsOptions = {
 
 app.use(cors(corsOptions));
 
-app.use(express.static(path.join(__dirname, 'WalkiesApi')));
+//app.use(express.static(path.join(__dirname, 'WalkiesApi')));
 
 // parse requests of content-type - application/json
 app.use(bodyParser.json());
@@ -22,6 +22,15 @@ app.use(bodyParser.urlencoded({
 
 // simple route
 app.get("/", (req, res) => {
+    var ipAddr = req.headers["x-forwarded-for"];
+    if (ipAddr) {
+        var list = ipAddr.split(",");
+        ipAddr = list[list.length - 1];
+        console.log(ipAddr)
+    } else {
+        ipAddr = req.connection.remoteAddress;
+        console.log(ipAddr)
+    }
     res.json({
         message: "Walkies API successfully running!"
     });
