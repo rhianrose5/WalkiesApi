@@ -5,7 +5,7 @@ module.exports = mongoose => {
             walkId: Number,
             walkName: String,
             userId: String,
-            commentId: Number,
+            commentId: String,
             comment: String
         })
     );

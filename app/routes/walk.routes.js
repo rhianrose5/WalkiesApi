@@ -18,5 +18,8 @@ module.exports = app => {
     // Retrieve all comments
     router.get("/comments/", comments.findAll);
 
+    // Retrieve all comments
+    router.post("/comments/createComment", comments.create);
+
     app.use('/api', router);
 };
