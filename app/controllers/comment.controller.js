@@ -58,3 +58,29 @@ exports.create = (req, res) => {
             });
         });
 };
+
+exports.delete = (req, res) => {
+    const commentId = req.query.commentId;
+
+    var condition = commentId ? {
+        commentId: commentId
+    } : {}
+
+    Comment.findOneAndDelete(condition)
+        .then(data => {
+            if (!data) {
+                res.status(404).send({
+                    message: `Cannot delete Comment with id=${commentId}`
+                });
+            } else {
+                res.send({
+                    message: "Comment was deleted successfully!"
+                });
+            }
+        })
+        .catch(err => {
+            res.status(500).send({
+                message: "Could not delete Comment with id=" + commentId
+            });
+        });
+};

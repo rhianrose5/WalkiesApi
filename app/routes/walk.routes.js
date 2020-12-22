@@ -21,5 +21,8 @@ module.exports = app => {
     // Retrieve all comments
     router.post("/comments/createComment", comments.create);
 
+    // Retrieve all comments
+    router.post("/comments/deleteComment", comments.delete);
+
     app.use('/api', router);
 };
