@@ -22,7 +22,7 @@ module.exports = app => {
     router.post("/comments/createComment", comments.create);
 
     // Retrieve all comments
-    router.post("/comments/deleteComment", comments.delete);
+    router.delete("/comments/deleteComment", comments.delete);
 
     app.use('/api', router);
 };
